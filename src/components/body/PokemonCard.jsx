@@ -4,7 +4,7 @@ import styles from './styles/pokemon-card.scss';
 
 const PokemonCard = (props) => (
   <div className="card-wrapper">
-    <h3>{props.name}</h3>
+    <h3>{props.poke.name}</h3>
   </div>
 );
 
