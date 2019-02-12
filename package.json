@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "node-sass": "^4.11.0",
+    "normalize.css": "^8.0.1",
     "react": "^16.8.1",
+    "react-css-modules": "^4.7.9",
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.5"
   },
