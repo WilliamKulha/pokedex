@@ -1,8 +1,8 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import styles from './App.scss';
+import styles from './app.scss';
 import PokedexHeader from 'components/header/PokedexHeader';
-import PokedexBody from 'components/body/PokedexBodhy';
+import PokedexBody from 'components/body/PokedexBody';
 
 const App = () => (
   <div className="app-wrapper">
