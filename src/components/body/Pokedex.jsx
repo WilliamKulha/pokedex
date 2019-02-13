@@ -29,7 +29,7 @@ class Pokedex extends Component {
       pokedexCopy.push(result)
       return result
     }))
-    .then(this.setState({pokedex: pokedexCopy}));
+    .then(pokedexCopy => this.setState({pokedex: pokedexCopy}));
   }
 
   getTypes = (array) => {
@@ -42,13 +42,16 @@ class Pokedex extends Component {
 
   render() {
     let pokeList = this.state.pokedex
-    console.log(pokeList)
+    if(pokeList.length !== 0) {
+      console.log(pokeList[0])
+    }
     return (
       <div className="pokedex-wrapper">
         {
           pokeList.map(pokemon => 
             <PokemonCard 
-            poke={pokemon}
+              key={pokemon.name}
+              poke={pokemon}
             />
             )
         }
