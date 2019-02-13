@@ -13,50 +13,27 @@ class Pokedex extends Component {
   } 
 
   componentDidMount() {
-    let pokedexCopy = this.state.pokedex.slice();
-    fetch('https://pokeapi.co/api/v2/pokemon/?limit=10')
+    fetch('https://pokeapi.co/api/v2/pokemon/?limit=150')
     .then(response => response.json())
-    .then(({results}) => results.map(result => {
-      fetch(result.url)
-      .then(response => response.json())
-      .then(data => {
-        result.image = data.sprites.front_default
-        result.order = data.order
-        result.weight = data.weight
-        result.height = data.height
-        result.types = this.getTypes(data.types)
-      })
-      pokedexCopy.push(result)
-      return result
-    }))
-    .then(pokedexCopy => this.setState({pokedex: pokedexCopy}));
-  }
-
-  getTypes = (array) => {
-   let types = [];
-   array.forEach((item) => {
-     types.push(item.type.name)
-   })
-   return types
+    .then(({results: pokedex}) => this.setState({pokedex: pokedex}));
   }
 
   render() {
     let pokeList = this.state.pokedex
-    if(pokeList.length !== 0) {
-      console.log(pokeList[0])
-    }
-    return (
-      <div className="pokedex-wrapper">
-        {
-          pokeList.map(pokemon => 
-            <PokemonCard 
-              key={pokemon.name}
-              poke={pokemon}
-            />
-            )
-        }
-      </div>
-    );
+    if(pokeList.length > 0) {
+      return (
+        <div className="pokedex-wrapper">
+          {
+            pokeList.map((pokemon, index) =>
+              <PokemonCard 
+                key={index}
+                poke={pokemon}
+              />
+              )
+          }
+        </div>
+      );
+    }   
   } 
 };
 

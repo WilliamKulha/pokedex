@@ -1,18 +1,80 @@
-import React from 'react'
+import React, {Component} from 'react'
 import CSSModules from 'react-css-modules';
 import styles from './styles/pokemon-card.scss';
 
-const PokemonCard = ({poke}) => {
+class PokemonCard extends Component { 
+  constructor(props) {
 
-  const {name, height, image, weight} = poke;
-  
-  return (
-    <div className="card-wrapper">
-      <img src={image} alt={name}/>
-      <h3>{name}</h3>
-      <p>{weight}</p>
-    </div>
-  )
+    super(props);
+
+    this.state = {
+      name: props.poke.name,
+      imageURL: null,
+      types: [],
+      height: null,
+      weight: null,
+      number: null
+    }
+  }
+
+  componentDidMount () {
+    let url = this.props.poke.url;
+    let types = this.state.types.slice()
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      let newTypes = this.getTypes(data.types)
+      newTypes.forEach((type) => {
+        types.push(type)
+      })
+      this.setState({
+        imageURL: data.sprites.front_default,
+        types: types,
+        height: data.height,
+        weight: data.weight,
+        number: data.order
+      })
+    })
+  }
+
+  getTypes = (array) => {
+    let types = [];
+    array.forEach((item) => {
+      types.push(item.type.name)
+    })
+    return types
+    }
+  render() {
+    let types = this.state.types;
+    return (
+      <div className="card-wrapper">
+        <div className="card-header">
+          <h3>{this.state.name}</h3>
+          <h3>{this.state.number}</h3>
+        </div>
+        <img src={this.state.imageURL} alt={this.state.name}/>
+        <div className="physicals">
+          <p>Weight: {this.state.weight * .22} lbs</p>
+          <p>Height: {this.state.height * 4} in.</p>        
+        </div>
+        <div className="types">
+          <h3>Types</h3>
+          <p>
+          {types.map(type => type + ' ')}          
+          </p>
+          {/* {
+            types.map(type => 
+              <p>{type}</p>
+            )
+          } */}
+        </div>
+
+       
+      </div>
+    )
+  }
+
+
 };
 
 export default CSSModules(PokemonCard, styles);
