@@ -54,19 +54,14 @@ class PokemonCard extends Component {
         </div>
         <img src={this.state.imageURL} alt={this.state.name}/>
         <div className="physicals">
-          <p>Weight: {this.state.weight * .22} lbs</p>
-          <p>Height: {this.state.height * 4} in.</p>        
+          <p>Weight: {Math.round(this.state.weight * .22)} lbs</p>
+          <p>Height: {Math.round(this.state.height * 4)} in.</p>        
         </div>
         <div className="types">
           <h3>Types</h3>
           <p>
           {types.map(type => type + ' ')}          
           </p>
-          {/* {
-            types.map(type => 
-              <p>{type}</p>
-            )
-          } */}
         </div>
 
        
