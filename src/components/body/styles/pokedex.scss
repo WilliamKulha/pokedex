@@ -6,3 +6,14 @@ h1 {
   display: flex;
   flex-flow: row wrap;
 }
+
+.search-field {
+  flex: 0 1 100%;
+  margin: 1em auto 1em auto;
+  
+  input {
+    height: 35px;
+    width: 85%;
+    padding: 5px;
+  }
+}

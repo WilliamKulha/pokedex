@@ -9,8 +9,13 @@ class Pokedex extends Component {
 
     this.state = {
       pokedex: [],
+      search: ''
     }
   } 
+  
+  filterList = e => {
+    this.setState({ search: e.target.value});
+  }
 
   componentDidMount() {
     fetch('https://pokeapi.co/api/v2/pokemon/?limit=150')
@@ -18,11 +23,15 @@ class Pokedex extends Component {
     .then(({results: pokedex}) => this.setState({pokedex: pokedex}));
   }
 
+
   render() {
     let pokeList = this.state.pokedex
     if(pokeList.length > 0) {
       return (
         <div className="pokedex-wrapper">
+        <div className="search-field">
+          <input type="text" onChange={this.filterList}/>
+        </div>
           {
             pokeList.map((pokemon, index) =>
               <PokemonCard 
