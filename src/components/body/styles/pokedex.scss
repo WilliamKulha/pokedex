@@ -1,19 +1,28 @@
-h1 {
-  font-size: 1.5em;
-}
+@import './variables';
 
-.pokedex-wrapper {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.search-field {
-  flex: 0 1 100%;
-  margin: 1em auto 1em auto;
+@include l {
   
-  input {
-    height: 35px;
-    width: 85%;
-    padding: 5px;
+  h1 {
+    font-size: 1.5em;
   }
+
+  .pokedex-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .search-field {
+    flex: 0 1 100%;
+    margin: 1em auto 1em auto;
+    
+    input {
+      height: 35px;
+      width: 85%;
+      padding: 5px;
+    }
+  }
+}
+
+@include m {
+  
 }

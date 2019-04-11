@@ -1,0 +1,22 @@
+$screen-xl-min: 1200px;
+$screen-l-min: 992px;
+$screen-m-min: 768px;
+
+
+@mixin xl {
+  @media (min-width : #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+@mixin l {
+  @media(min-width : #{$screen-l-min}) {
+    @content;
+  }
+}
+
+@mixin m {
+  @media(min-width : #{$screen-m-min}) {
+    @content;
+  }
+}
