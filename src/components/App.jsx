@@ -8,24 +8,46 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      pokeList: [],
+      pokedex: [],
+      search: '',
       loaded: false,
       error: false
     }
 
   }
 
-  componentDidMount() {
-    fetch('https://pokeapi.co/api/v2/pokemon/?limit=150')
-    .then(response => response.json())
-    .then(({results: pokedex}) => this.setState({pokeList: pokedex}));
+  
+  filterList = e => {
+    this.setState({ search: e.target.value});
   }
+
+  getList = async () => {
+    return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=807`)
+    .then(resp => resp.json())
+  }
+
+  getPokemon = (pokelist) => {
+    const promises = pokelist.results.map(async pokemon => {
+      return await fetch(`${pokemon.url}`)
+      .then(resp => resp.json())
+    })
+    return Promise.all(promises);
+  }
+
+  componentDidMount() {
+    this.getList()
+      .then(bigList => {
+        return this.getPokemon(bigList)
+          .then(results => this.setState({pokedex: results}))
+      });
+      this.setState({loaded : true});
+    }
 
   render() {
     return (
       <div className="app-wrapper">
       <PokedexHeader />
-      <Pokedex pokeList={this.state.pokeList}/>
+      <Pokedex pokedex={this.state.pokedex} filterList={this.filterList} search={this.state.search}/>
       </div>
     )
   }
