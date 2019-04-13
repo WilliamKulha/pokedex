@@ -1,3 +1,5 @@
+@import './variables';
+
 .card-wrapper {
   display: flex;
   flex-flow: column;
@@ -25,9 +27,66 @@
     align-self: center;
   }
 
-  .physicals {
-    margin-right: auto;
-    margin-left: auto;
+  .types {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    .poison {
+      @include type-pill($poison-type);
+    }
+
+    .grass {
+      @include type-pill($grass-type);
+    }
+    .fire {
+      @include type-pill($fire-type);
+    }
+    .water {
+      @include type-pill($water-type);
+    }
+    .bug {
+      @include type-pill($bug-type);
+    }
+    .flying {
+      @include type-pill($flying-type);
+    }
+    .normal {
+      @include type-pill($normal-type);
+    }
+    .electric {
+      @include type-pill($electric-type);
+    }
+    .ground {
+      @include type-pill($ground-type);
+    }
+    .fairy {
+      @include type-pill($fairy-type);
+    }
+    .fighting {
+      @include type-pill($fighting-type);
+    }
+    .psychic {
+      @include type-pill ($psychic-type);
+    }
+    .rock {
+      @include type-pill($rock-type);
+    }
+    .steel {
+      @include type-pill($steel-type);
+    }
+    .ice {
+      @include type-pill($ice-type);
+    }
+    .ghost {
+      @include type-pill($ghost-type);
+    }
+    .dragon {
+      @include type-pill($dragon-type);
+    }
+    .dark {
+      @include type-pill($dark-type);
+    }
   }
 
 }

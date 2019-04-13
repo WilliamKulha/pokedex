@@ -1,5 +1,16 @@
 @import './variables';
 
+.search-field {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.pokedex-wrapper {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+
 @include l {
   
   h1 {
@@ -23,6 +34,3 @@
   }
 }
 
-@include m {
-  
-}

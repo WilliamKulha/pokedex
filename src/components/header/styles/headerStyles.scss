@@ -1,4 +1,10 @@
-.header-wrapper {
-  margin-right: auto;
-  margin-left: auto;
+@import './variables';
+
+@include l  {
+  .header-wrapper {
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
+
+

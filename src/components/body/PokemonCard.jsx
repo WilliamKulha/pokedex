@@ -9,15 +9,12 @@ const PokemonCard = ({pokemon}) => (
     <h3>{pokemon.number}</h3>
   </div>
   <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
-  <div className="physicals">
-    <p>Weight: {Math.round(pokemon.weight * .22)} lbs</p>
-    <p>Height: {Math.round(pokemon.height * 4)} in.</p>        
-  </div>
   <div className="types">
-    <h3>Types</h3>
-    <p>
-    {pokemon.types.map(type => type.name + ' ')}          
-    </p>
+    {
+      pokemon.types.map(type => 
+        <p className={type.type.name}>{type.type.name.toUpperCase()}</p>
+      )
+    }
   </div>       
 </div>
 )
