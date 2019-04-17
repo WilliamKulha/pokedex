@@ -4,8 +4,6 @@ import styles from './app.scss';
 import PokedexHeader from 'components/header/PokedexHeader';
 import Pokedex from 'components/body/Pokedex';
 import PokemonView from 'components/body/PokemonView';
-import {BrowserRouter, Route} from 'react-router-dom';
-
 
 class App extends Component {
   constructor() {
@@ -20,8 +18,16 @@ class App extends Component {
 
   }
 
-  exitPokemonView = (e) => {
+  exitPokemonView = () => {
     this.setState({currentPokemon : null})
+  }
+
+  movePokedexRight = () => {
+    this.setState({currentPokemon : this.state.pokedex[this.state.currentPokemon.game_indices[0].game_index]})
+  }
+
+  movePokedexLeft = () => {
+    this.setState({currentPokemon : this.state.pokedex[this.state.currentPokemon.game_indices[0].game_index -2]})
   }
 
   clickPokemon = (index) => {
@@ -59,7 +65,7 @@ class App extends Component {
       return (
         <div className="app-wrapper">
           <PokedexHeader />
-          <PokemonView pokemon={this.state.currentPokemon} exit={this.exitPokemonView}/>
+          <PokemonView pokemon={this.state.currentPokemon} exit={this.exitPokemonView} goRight={this.movePokedexRight} goLeft={this.movePokedexLeft}/>
         </div>
       )
     } else {
@@ -70,21 +76,6 @@ class App extends Component {
         </div>
       )
     }
-    // return (
-    //   <BrowserRouter>
-    //     <div className="app-wrapper">
-    //       <PokedexHeader />
-    //       <Route
-    //         path='/'
-    //         render={(props) => <Pokedex pokedex={this.state.pokedex} filterList={this.filterList} search={this.state.search} clicked={this.clickPokemon}/>}
-    //       />
-    //       <Route
-    //         path='/pokemon'
-    //         render={(props) => <PokemonView pokemon={this.state.currentPokemon} />}
-    //       />
-    //     </div>
-    //   </BrowserRouter>
-    // )
   }
 
 }

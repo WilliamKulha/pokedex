@@ -1,10 +1,49 @@
+@import '../../variables';
+
+* {
+  box-sizing: border-box;
+}
 .poke-view-wrapper {
   margin: 1em 1em;
+}
+
+.navigate {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.nav-part {
+  display: flex;
+}
+.close-icon {
+  :hover {
+    cursor: pointer;
+  }
+  color: red;
+  font-size: 3em;
+}
+
+.go-right {
+  :hover {
+    cursor: pointer;
+  }
+  color: $poke-info-bg-color;
+  font-size: 3em;
+}
+
+.go-left {
+  :hover {
+    cursor: pointer;
+  }
+  color: $poke-info-bg-color;
+  font-size: 3em;
 }
 
 .poke-name {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
 
   h1 {
     text-transform: capitalize;
@@ -12,8 +51,45 @@
 }
 
 .poke-image {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
   img {
     height: 240px;
     width: 240px;
+  }
+}
+
+.stats {
+  background-color: $poke-stats-bg-color;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  h3 {
+    background-color: $card-top-color;
+    padding: 1em;
+    color: black;
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  p {
+    color: #fff;
+    padding: 1em;
+  }
+
+}
+
+.extra-info {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background: $poke-info-bg-color;
+  border-radius: 15px;
+  margin-bottom: 2em;
+}
+
+.info-pair {
+  h5 {
+    color: white;
   }
 }

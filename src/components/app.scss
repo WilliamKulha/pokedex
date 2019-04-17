@@ -1,5 +1,13 @@
+@import './variables';
+
 .app-wrapper {
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
+}
+
+@include m {
+  .app-wrapper {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

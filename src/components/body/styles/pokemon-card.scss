@@ -1,4 +1,4 @@
-@import './variables';
+@import '../../variables';
 
 .card-wrapper {
   :hover {
@@ -10,13 +10,13 @@
   min-width: 300px;
   max-width: 350px;
   border-radius: 15px;
-  background-color: #f6f6f6;
+  background-color: $card-bg-color;
   border: 2px solid gray;
   margin: 1em;
 
   .card-header {
     text-align: center;
-    background-color: rgb(218, 229, 236);
+    background-color: $card-top-color;
     padding: .25em;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
