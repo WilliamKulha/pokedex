@@ -1,10 +1,14 @@
 @import './variables';
 
 .card-wrapper {
+  :hover {
+    cursor: pointer;
+  }
   display: flex;
   flex-flow: column;
   box-sizing: border-box;
   min-width: 300px;
+  max-width: 350px;
   border-radius: 15px;
   background-color: #f6f6f6;
   border: 2px solid gray;

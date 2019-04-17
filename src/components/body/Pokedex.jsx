@@ -6,7 +6,7 @@ import PokemonCard from 'components/body/PokemonCard';
 const Pokedex = (props) => (
 <div className="pokedex-wrapper">
   <div className="search-field">
-    <input type="text" onChange={props.filterList}/>
+    <input type="text" onChange={props.filterList} value={props.search}/>
   </div>
     {
       props.pokedex.filter(pokemon => 
@@ -14,8 +14,10 @@ const Pokedex = (props) => (
             props.search.toLowerCase())
       ).map((pokemon, index) =>
         <PokemonCard 
-          key={index}
+          key={pokemon.name}
+          id={pokemon.game_indices[0].game_index}
           pokemon={pokemon}
+          onClick={props.clicked}
         />
         )
     }

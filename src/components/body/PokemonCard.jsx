@@ -2,16 +2,16 @@ import React from 'react'
 import CSSModules from 'react-css-modules';
 import styles from './styles/pokemon-card.scss';
 
-const PokemonCard = ({pokemon}) => (
-<div className="card-wrapper">
+const PokemonCard = (props) => (
+<div className="card-wrapper" onClick={() => props.onClick(props.id)}>
   <div className="card-header">
-    <h3>{pokemon.name}</h3>
-    <h3>{pokemon.number}</h3>
+    <h3>{props.pokemon.name}</h3>
+    <h3>{props.pokemon.number}</h3>
   </div>
-  <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
+  <img src={props.pokemon.sprites.front_default} alt={props.pokemon.name}/>
   <div className="types">
     {
-      pokemon.types.map(type => 
+      props.pokemon.types.map(type => 
         <p className={type.type.name}>{type.type.name.toUpperCase()}</p>
       )
     }
@@ -20,3 +20,6 @@ const PokemonCard = ({pokemon}) => (
 )
 
 export default CSSModules(PokemonCard, styles);
+
+
+// onClick={props.onClick(props.key)} Adding this to the div as an onclick function breaks the application.
