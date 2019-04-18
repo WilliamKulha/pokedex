@@ -9,19 +9,19 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const PokemonView = (props) => (
   <div className="poke-view-wrapper">
-  <div className="navigate">
-    <div className="nav-part">
-      <FontAwesomeIcon className='go-left' icon={faArrowLeft} onClick={props.goLeft}/>
-      <p>#{props.pokemon.game_indices[0].game_index - 1} </p>
+    <div className="navigate">
+      <div className="nav-part">
+        <FontAwesomeIcon className='go-left' icon={faArrowLeft} onClick={props.goLeft}/>
+        <p>#{props.pokemon.game_indices[0].game_index - 1} </p>
+      </div>
+      <div className="nav-part">
+        <FontAwesomeIcon className='close-icon' onClick={props.exit} icon={faTimes} />  
+      </div>
+      <div className="nav-part">
+        <p>#{props.pokemon.game_indices[0].game_index + 1}</p>
+        <FontAwesomeIcon className='go-right' icon={faArrowRight} onClick={props.goRight}/>  
+      </div>
     </div>
-    <div className="nav-part">
-      <FontAwesomeIcon className='close-icon' onClick={props.exit} icon={faTimes} />  
-    </div>
-    <div className="nav-part">
-      <p>#{props.pokemon.game_indices[0].game_index + 1}</p>
-      <FontAwesomeIcon className='go-right' icon={faArrowRight} onClick={props.goRight}/>  
-    </div>
-  </div>
     <div className="poke-name">
       <h1 className="title">{props.pokemon.name}</h1>
       <h2>#{props.pokemon.id}</h2>

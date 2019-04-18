@@ -20,6 +20,3 @@ const PokemonCard = (props) => (
 )
 
 export default CSSModules(PokemonCard, styles);
-
-
-// onClick={props.onClick(props.key)} Adding this to the div as an onclick function breaks the application.

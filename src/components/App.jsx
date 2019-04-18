@@ -12,26 +12,40 @@ class App extends Component {
       pokedex: [],
       search: '',
       currentPokemon : null,
+      extraInfo : null,
       loaded: false,
       error: false
     }
 
   }
 
+  getExtraInfo = () => {
+    fetch(this.state.currentPokemon.species.url)
+        .then(response => response.json())
+          .then(data => this.setState({extraInfo : data}))
+  }
+
   exitPokemonView = () => {
     this.setState({currentPokemon : null})
   }
-
-  movePokedexRight = () => {
-    this.setState({currentPokemon : this.state.pokedex[this.state.currentPokemon.game_indices[0].game_index]})
+  
+  movePokedexRight = async () => {
+    if(this.state.currentPokemon.order !== this.state.pokedex.length) {
+      await this.setState({currentPokemon : this.state.pokedex[ (this.state.pokedex.indexOf(this.state.currentPokemon) + 1) ]})
+      this.getExtraInfo();
+    }
   }
 
-  movePokedexLeft = () => {
-    this.setState({currentPokemon : this.state.pokedex[this.state.currentPokemon.game_indices[0].game_index -2]})
+  movePokedexLeft = async () => {
+    if (this.state.currentPokemon.order !== 1) {
+      await this.setState({currentPokemon : this.state.pokedex[ (this.state.pokedex.indexOf(this.state.currentPokemon) - 1 )]})
+      this.getExtraInfo();
+    }
   }
 
-  clickPokemon = (index) => {
-    this.setState({currentPokemon : this.state.pokedex[index - 1]})
+  clickPokemon = async (index) => {
+    await this.setState({currentPokemon : this.state.pokedex[index - 1]})
+    this.getExtraInfo();
   }
   
   filterList = e => {
@@ -65,7 +79,7 @@ class App extends Component {
       return (
         <div className="app-wrapper">
           <PokedexHeader />
-          <PokemonView pokemon={this.state.currentPokemon} exit={this.exitPokemonView} goRight={this.movePokedexRight} goLeft={this.movePokedexLeft}/>
+          <PokemonView pokemon={this.state.currentPokemon} exit={this.exitPokemonView} goRight={this.movePokedexRight} goLeft={this.movePokedexLeft} extra={this.state.extraInfo}/>
         </div>
       )
     } else {
