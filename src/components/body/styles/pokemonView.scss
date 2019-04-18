@@ -86,10 +86,27 @@
   background: $poke-info-bg-color;
   border-radius: 15px;
   margin-bottom: 2em;
+
 }
 
 .info-pair {
+  flex-shrink: 0;
   h5 {
     color: white;
   }
+}
+
+.abilities-pair {
+  h4 {
+    text-transform: capitalize;
+  }
+}
+
+.types-detail {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content : flex-start;
+    p {
+      margin-right: 1em;
+    }
 }

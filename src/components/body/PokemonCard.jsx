@@ -12,7 +12,7 @@ const PokemonCard = (props) => (
   <div className="types">
     {
       props.pokemon.types.map(type => 
-        <p className={type.type.name}>{type.type.name.toUpperCase()}</p>
+        <p className={type.type.name} key={type.type.name}>{type.type.name.toUpperCase()}</p>
       )
     }
   </div>       
