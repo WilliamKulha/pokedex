@@ -41,20 +41,39 @@ class PokemonView extends Component {
     let types = pokemon.types.map( type => {
        return type.type.name
     })
-    let results =[];
+    let midway =[];
     types.forEach(function(type) {
-      results.push(...hashTable[type]);
+      midway.push(...hashTable[type]);
     })
-    for(let i = 0; i < results.length; i++) {
-      if(types.indexOf(results[i]) !== -1) {
-        results.splice(i, 1);
+    for(let i = 0; i < midway.length; i++) {
+      if(types.indexOf(midway[i]) !== -1) {
+        midway.splice(i, 1);
       }
     }
-    console.log(results)
+
+    let results = [];
+
+    for (let i = 0; i < midway.length; i++) {
+      if (results.indexOf(midway[i]) === -1) {
+        results.push(midway[i]);
+      }
+    }
+    
     this.setState({currentWeaknesses : results});
   }
 
+  handleKeyPress = (e) => {
+    if(e.keyCode === 39) {
+      this.props.goRight();
+    } else if (e.keyCode === 37) {
+      this.props.goLeft();
+    } else if (e.keyCode === 27) {
+      this.props.exit();
+    }
+  }
+
   componentDidMount () {
+    document.addEventListener("keydown", this.handleKeyPress, false)
     this.getExtraInfo();
     this.getWeaknesses(this.props.pokemon, vulnerabilitiesHash);
   }
@@ -64,6 +83,9 @@ class PokemonView extends Component {
       this.getExtraInfo();
       this.getWeaknesses(this.props.pokemon, vulnerabilitiesHash);
     }
+  }
+  componentWillUnmount(){
+    document.removeEventListener("keydown", this.handleKeyPress, false);
   }
 
 
@@ -145,7 +167,6 @@ class PokemonView extends Component {
               }
             </div>     
           </div>
-
         </div>    
       )
     } 

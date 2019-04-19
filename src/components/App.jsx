@@ -74,14 +74,25 @@ class App extends Component {
       return (
         <div className="app-wrapper">
           <PokedexHeader />
-          <PokemonView pokemon={this.state.currentPokemon} exit={this.exitPokemonView} pokedex={this.state.pokedex} goLeft={this.movePokedexLeft} goRight={this.movePokedexRight}/>
+          <PokemonView 
+            pokemon={this.state.currentPokemon} 
+            exit={this.exitPokemonView} 
+            pokedex={this.state.pokedex} 
+            goLeft={this.movePokedexLeft} 
+            goRight={this.movePokedexRight}
+          />
         </div>
       )
     } else {
       return (
         <div className="app-wrapper">
           <PokedexHeader />
-          <Pokedex pokedex={this.state.pokedex} filterList={this.filterList} search={this.state.search} clicked={this.clickPokemon}/>
+          <Pokedex 
+            pokedex={this.state.pokedex} 
+            filterList={this.filterList} 
+            search={this.state.search} 
+            clicked={this.clickPokemon}
+          />
         </div>
       )
     }
